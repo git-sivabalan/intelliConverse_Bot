@@ -5,7 +5,7 @@ const { GoogleGenerativeAI } = require ("@google/generative-ai");
 
 const genAI = new GoogleGenerativeAI(process.env.genAI_Token);
 const bot = new Telegraf(process.env.TelegramBot_Token)
-bot.command('start',(ctx)=>{
+bot.command('/start',(ctx)=>{
     ctx.reply("Ask your Query")
 })
 console.log(`Chat with bot : https://t.me/intelliConverse_bot`)
