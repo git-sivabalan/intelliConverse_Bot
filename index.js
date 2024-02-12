@@ -5,7 +5,12 @@ const { GoogleGenerativeAI } = require ("@google/generative-ai");
 const express = require('express')
 const app = express()
 const genAI = new GoogleGenerativeAI(process.env.genAI_Token);
-const bot = new Telegraf(process.env.TelegramBot_Token)
+const bot = new Telegraf(process.env.TelegramBot_Token, {
+    polling: {
+        timeout: 60 // Set a higher timeout value, e.g., 60 seconds
+    }
+});
+
 console.log(`Chat with bot : https://t.me/intelliConverse_bot`)
 bot.on('message', async (ctx) => {
     try {
@@ -54,7 +59,9 @@ function splitText(text, maxLength) {
     return chunks;
 }
 
-bot.launch()
+
 app.listen(5000,()=>{
     console.log('Server running on port 5000')
 })
+
+bot.launch()
