@@ -8,6 +8,7 @@ const bot = new Telegraf(process.env.TelegramBot_Token)
 bot.command('/start',(ctx)=>{
     ctx.reply("Ask your Query")
 })
+console.log("This Bot is Created by Siva")
 console.log(`Chat with bot : https://t.me/intelliConverse_bot`)
 bot.on('message', async (ctx) => {
     try {
