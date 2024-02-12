@@ -2,7 +2,8 @@
 const {Telegraf} = require('telegraf')
 const dotenv = require('dotenv').config()
 const { GoogleGenerativeAI } = require ("@google/generative-ai");
-
+const express = require('express')
+const app = express()
 const genAI = new GoogleGenerativeAI(process.env.genAI_Token);
 const bot = new Telegraf(process.env.TelegramBot_Token)
 console.log(`Chat with bot : https://t.me/intelliConverse_bot`)
@@ -54,4 +55,6 @@ function splitText(text, maxLength) {
 }
 
 bot.launch()
-
+app.listen(5000,()=>{
+    console.log('Server running on port 5000')
+})
